@@ -1,11 +1,11 @@
-import './App.css';
+import "./App.css";
+import JsonBox from "./client/components/JsonBox";
 
 function App() {
   return (
     <div>
-      <p>JSON</p>
-     <textarea rows={30} cols={60} placeholder='paste JSON here...'/>
-    </div> 
+      <JsonBox />
+    </div>
   );
 }
 
