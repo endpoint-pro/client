@@ -1,4 +1,3 @@
-import "./App.css";
 import JsonBox from "./client/components/JsonBox";
 
 function App() {
