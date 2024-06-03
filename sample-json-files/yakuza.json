@@ -1,0 +1,46 @@
+{
+  "gameTitle": "Yakuza: Like a Dragon",
+  "releaseYear": 2020,
+  "developer": "Ryu Ga Gotoku Studio",
+  "publisher": "Sega",
+  "platforms": [
+    "PlayStation 4",
+    "PlayStation 5",
+    "Xbox One",
+    "Xbox Series X/S",
+    "Microsoft Windows"
+  ],
+  "mainCharacter": {
+    "name": "Ichiban Kasuga",
+    "age": 42,
+    "affiliation": "Tojo Clan",
+    "skills": [
+      {
+        "name": "Tenacious Fist",
+        "power": 150,
+        "type": "Physical"
+      },
+      {
+        "name": "Pigeon Storm",
+        "power": 120,
+        "type": "Special"
+      }
+    ]
+  },
+  "storyline": {
+    "summary": "Ichiban Kasuga, a low-ranking grunt of a low-ranking yakuza family in Tokyo, faces betrayal and seeks to rise again.",
+    "chapters": 15,
+    "antagonists": [
+      {
+        "name": "Ryo Aoki",
+        "role": "Governor of Tokyo",
+        "background": "Formerly Masato Arakawa, a rival yakuza member."
+      },
+      {
+        "name": "Jo Sawashiro",
+        "role": "Captain of the Omi Alliance",
+        "background": "A long-time rival of Kasuga."
+      }
+    ]
+  }
+}

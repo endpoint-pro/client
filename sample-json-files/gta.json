@@ -1,0 +1,64 @@
+{
+  "gameTitle": "Grand Theft Auto V",
+  "releaseYear": 2013,
+  "developer": "Rockstar North",
+  "publisher": "Rockstar Games",
+  "platforms": [
+    "PlayStation 3",
+    "PlayStation 4",
+    "PlayStation 5",
+    "Xbox 360",
+    "Xbox One",
+    "Xbox Series X/S",
+    "Microsoft Windows"
+  ],
+  "mainCharacters": [
+    {
+      "name": "Michael De Santa",
+      "age": 45,
+      "occupation": "Retired bank robber",
+      "skills": [
+        {
+          "name": "Bullet Time",
+          "effect": "Slows down time during combat"
+        }
+      ]
+    },
+    {
+      "name": "Franklin Clinton",
+      "age": 25,
+      "occupation": "Repo man",
+      "skills": [
+        {
+          "name": "Driving Focus",
+          "effect": "Slows down time while driving"
+        }
+      ]
+    },
+    {
+      "name": "Trevor Philips",
+      "age": 40,
+      "occupation": "Criminal mastermind",
+      "skills": [
+        {
+          "name": "Rage Mode",
+          "effect": "Increased damage and resistance"
+        }
+      ]
+    }
+  ],
+  "storyline": {
+    "summary": "Three criminals team up for a series of heists while dealing with personal issues and government forces.",
+    "missions": 69,
+    "antagonists": [
+      {
+        "name": "Steve Haines",
+        "role": "Corrupt FIB agent"
+      },
+      {
+        "name": "Devin Weston",
+        "role": "Billionaire investor"
+      }
+    ]
+  }
+}
