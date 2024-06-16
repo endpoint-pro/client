@@ -1,46 +1,25 @@
 import React, { useState } from "react";
+import { Controlled as CodeMirror } from "react-codemirror2";
+import "codemirror/lib/codemirror.css";
+import "codemirror/theme/material.css";
+import "codemirror/mode/javascript/javascript";
 
 const JsonBox = () => {
   const [jsonInput, setJsonInput] = useState("");
   const [validJson, setValidJson] = useState(true);
 
-  const handlePaste = (event) => {
-    // Prevent the default paste behavior
-    event.preventDefault();
-
-    // Get the pasted text
-    const pastedText = event.clipboardData.getData("text");
-    const jsonString = pastedText.replace(/(\w+):/g, '"$1":');
-
-    // Try to format the pasted JSON
-    try {
-      const parsedJson = JSON.parse(jsonString);
-      const prettyJson = JSON.stringify(parsedJson, null, 2);
-      setJsonInput(prettyJson);
-      setValidJson(true);
-      if (jsonString.length === 0) {
-        setValidJson(false);
-      }
-    } catch (error) {
-      setValidJson(false);
-    }
+  const handleInputChange = (editor, data, value) => {
+    setJsonInput(value);
+    formatJson(value);
   };
 
-  // TODO: CONSIDER DEBOUNCING FOR BETTER PERFORMANCE
-  const handleChange = (event) => {
-    const value = event.target.value;
-    setJsonInput(value);
-
-    if (value.trim() === "") {
-      setValidJson(true);
-      return;
-    }
-
-    // Try to format and validate the JSON input
+  const formatJson = (value) => {
     try {
-      const parsedJson = JSON.parse(value);
-      const prettyJson = JSON.stringify(parsedJson, null, 2);
-      setJsonInput(prettyJson);
+      if (value !== "") {
+        const parsedJson = JSON.parse(value);
+        const prettyJson = JSON.stringify(parsedJson, null, 2);
+        setJsonInput(prettyJson);
+      }
       setValidJson(true);
     } catch (error) {
       setValidJson(false);
@@ -48,22 +27,32 @@ const JsonBox = () => {
   };
 
   return (
-    <div className="p-4">
-      <p className="mb-2 text-lg font-semibold">JSON</p>
-      <textarea
-        className={`w-full h-96 p-2 border ${
-          validJson ? "border-gray-300" : "border-red-500"
-        } rounded`}
-        rows={30}
-        cols={60}
-        onPaste={handlePaste}
-        value={jsonInput}
-        onChange={handleChange}
-        placeholder="paste JSON here..."
-      />
-      <p>{!validJson && "Invalid Json"}</p>
+    <div className="flex flex-col h-full max-h-screen">
+      <div className="bg-gray-800 text-white py-2 px-4">
+        <h2 className="text-lg font-semibold">JSON Formatter</h2>
+      </div>
+      <div className="flex-grow p-4 bg-gray-900 overflow-hidden">
+        <CodeMirror
+          value={jsonInput}
+          options={{
+            mode: "application/json",
+            theme: "material",
+            lineNumbers: true,
+            lineWrapping: true,
+            viewportMargin: Infinity,
+            tabSize: 2,
+            readOnly: false,
+          }}
+          onBeforeChange={(editor, data, value) => {
+            handleInputChange(editor, data, value);
+          }}
+          onChange={(editor, data, value) => {
+            handleInputChange(editor, data, value);
+          }}
+        />
+      </div>
+      {!validJson && <div className="text-red-500 p-4">Invalid JSON</div>}
     </div>
   );
 };
-
 export default JsonBox;
